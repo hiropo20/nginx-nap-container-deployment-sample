@@ -1,0 +1,16 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: perpod-cafe
+spec:
+  host: perpod-cafe.example.com
+  tls:
+    secret: cafe-secret
+  upstreams:
+  - name: perpod-nap
+    service: perpod-nap-svc
+    port: 8080
+  routes:
+  - path: /
+    action:
+      pass: perpod-nap

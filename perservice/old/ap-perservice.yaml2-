@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: perservice-nap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: perservice-nap
+  template:
+    metadata:
+      labels:
+        app: perservice-nap
+    spec:
+      containers:
+      - name: perservice-nap
+        image: gcr.io/f5-gcs-4299-sales-se-nginx/matsu-nginxplus-nap
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: nginx-conf
+            mountPath: /etc/nginx/nginx.conf
+          - name: ap-defaultconfig
+            mountPath: /etc/nginx/conf.d/ap-default.conf
+          - name: security-policy
+            mountPath: /etc/nginx/conf.d/custom_policy.json
+          - name: security-log
+            mountPath: /etc/nginx/conf.d/custom_log_format.json
+      volumes:
+      - name: nginx-conf
+        configMap:
+          name: nginx-conf
+          items:
+            - key: nginx.conf
+              path: nginx.conf
+              mode: 0644 
+      - name: ap-defaultconfig
+        configMap:
+          name: ap-defaultconfig
+          items:
+            - key: ap-default.conf
+              path: ap-default.conf
+              mode: 0644 
+      - name: security-policy 
+        configMap:
+          name: security-policy
+          items:
+            - key: custom_policy.json
+              path: custom_policy.json
+              mode: 0644 
+      - name: security-log
+        configMap:
+          name: security-log
+          items:
+            - key: custom_log_format.json
+              path: custom_log_format.json
+              mode: 0644 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: perservice-nap-svc
+  labels:
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    app: perservice-nap

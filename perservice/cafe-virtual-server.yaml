@@ -1,0 +1,16 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: perservice-cafe
+spec:
+  host: perservice-cafe.example.com
+  tls:
+    secret: cafe-secret
+  upstreams:
+  - name: perservice-nap
+    service: perservice-nap-svc
+    port: 80
+  routes:
+  - path: /
+    action:
+      pass: perservice-nap
