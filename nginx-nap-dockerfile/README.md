@@ -13,3 +13,6 @@ docker build --no-cache -t nginxplus-nap .
 
 ## 3. Container Imageの登録
 作成されたDocker Iamageを適切なContainer Registryに登録
+
+
+
