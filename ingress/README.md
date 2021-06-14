@@ -3,7 +3,7 @@
 [nginxinc/kubernetes-ingress/examples/appprotect](https://github.com/nginxinc/kubernetes-ingress/tree/master/examples/appprotect)
 
 # 環境構築
-## 1. Syslog ServerのDeploy
+## 1. Syslog Serverの作成
 ```
 kubectl create -f syslog.yaml
 ```
