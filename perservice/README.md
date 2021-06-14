@@ -14,7 +14,16 @@ ap-perservice.yaml内、syslog serverのIPアドレスを[Ingress 手順1.](http
 ```
 app_protect_security_log "/etc/nginx/custom_log_format.json" syslog:server=127.0.0.1:514;
 ```
-作成
+ap-perservice.yaml内、imageを予め作成したContainer Imageを指定してください
+```yaml
+    spec:
+      containers:
+      - name: perservice-nap
+        image: nginx-plus-nap:latest
+        ports:
+        - containerPort: 80
+```
+Serviceの作成
 ```
 kubectl apply -f ap-perservice.yaml -n perservice
 ```
