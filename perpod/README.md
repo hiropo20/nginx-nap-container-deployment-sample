@@ -1,0 +1,36 @@
+# 手順
+最新の情報、手順は以下を参照してください   
+[nginxinc/kubernetes-ingress/examples/appprotect](https://github.com/nginxinc/kubernetes-ingress/tree/master/examples/appprotect)
+
+# 環境構築
+## 1. Name Spaceの作成
+```
+kubectl apply -f ns-perpod.yaml
+```
+## 2. Service の作成
+ap-perpod.yaml内、syslog serverのIPアドレスを[Ingress 手順1.](https://github.com/hiropo20/nginx-nap-container-deployment-sample/tree/master/ingress#1-syslog-server%E3%81%AEdeploy)で確認したServiceのIPアドレスに変更ください
+```
+app_protect_security_log "/etc/nginx/custom_log_format.json" syslog:server=127.0.0.1:514;
+```
+作成
+```
+kubectl apply -f ap-perpod.yaml -n perpod
+```
+## 3. Virtual Server Resourceの作成
+```
+kubectl apply -f cafe-virtual-server.yaml -n perpod
+```
+
+
+# 動作確認
+## サンプルリクエストの実行
+```
+curl -H "Host: perpod-cafe.example.com" https://**宛先IPアドレス**/coffee --insecure
+curl -H "Host: perpod-cafe.example.com" "https://**宛先IPアドレス**/coffee?<script>" --insecure
+curl -H "Host: perpod-cafe.example.com" https://**宛先IPアドレス**/tea --insecure
+curl -H "Host: perpod-cafe.example.com" "https://**宛先IPアドレス**/tea?<script>" --insecure
+```
+## Security Logの確認
+```
+kubectl exec -it **SYSLOG_POD** -- cat /var/log/messages
+```
