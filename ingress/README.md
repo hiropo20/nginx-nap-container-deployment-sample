@@ -49,7 +49,7 @@ kubectl create -f ap-logconf.yaml
 kubectl create -f ap-apple-uds.yaml
 ```
 
-### 5. Ingress Resourceの作成
+## 5. Ingress Resourceの作成
 cafe-ingress.yaml内、syslog serverのIPアドレスを[手順1.](https://github.com/hiropo20/nginx-nap-container-deployment-sample/tree/master/ingress#1-syslog-server%E3%81%AEdeploy)で確認したServiceのIPアドレスに変更ください
 ```yaml
 appprotect.f5.com/app-protect-security-log-destination: "syslog:server=127.0.0.1:514"
