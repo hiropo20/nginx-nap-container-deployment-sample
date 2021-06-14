@@ -1,6 +1,4 @@
 # 手順
-最新の情報、手順は以下を参照してください   
-[nginxinc/kubernetes-ingress/examples/appprotect](https://github.com/nginxinc/kubernetes-ingress/tree/master/examples/appprotect)
 
 # 環境構築
 ## 1. Name Spaceの作成
@@ -33,4 +31,12 @@ curl -H "Host: perpod-cafe.example.com" "https://**宛先IPアドレス**/tea?<s
 ## Security Logの確認
 ```
 kubectl exec -it **SYSLOG_POD** -- cat /var/log/messages
+```
+
+# TIPS
+## コマンド
+```
+kubectl get pods -n perpod
+kubectl logs **Per-Pod POD名** **Container名** -n perpod
+kubectl exec -c **Container名** -it **Per-Pod POD名** -- bash -n perpod
 ```
