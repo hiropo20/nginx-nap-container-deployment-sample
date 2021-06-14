@@ -15,4 +15,9 @@ docker build --no-cache -t nginxplus-nap .
 作成されたDocker Iamageを適切なContainer Registryに登録
 
 
-
+# TIPS
+## コマンド
+NGINXの起動ログ
+```
+kubectl logs **POD名** 
+```
