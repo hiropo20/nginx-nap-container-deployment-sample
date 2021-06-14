@@ -20,11 +20,11 @@ MakeFileのTargetとして以下を選択ください
 1. Ingress Controller のデプロイ   
 [NGINX Doc:Installation with Manifests](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/)
 
-## 2. NGINX App Protect Docker Imanageを作成する
-- [NGINX App Protect Dockerfile](https://github.com/hiropo20/nginx-nap-container-deployment-sample/tree/master/nginx-nap-dockerfile)   
-
-## 3. IngressでNAPを利用する
+## 2. IngressでNAPを利用する
 - [Ingress](https://github.com/hiropo20/nginx-nap-container-deployment-sample/tree/master/ingress)   
+
+## 3. NGINX App Protect Docker Imanageを作成する
+- [NGINX App Protect Dockerfile](https://github.com/hiropo20/nginx-nap-container-deployment-sample/tree/master/nginx-nap-dockerfile)   
 
 ## 4. Per-Service ProxyでNAPを利用する
 - [Per-Service Proxy](https://github.com/hiropo20/nginx-nap-container-deployment-sample/tree/master/perservice)   
