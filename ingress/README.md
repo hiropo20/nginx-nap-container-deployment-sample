@@ -2,6 +2,7 @@
 最新の情報、手順は以下を参照してください   
 [nginxinc/kubernetes-ingress/examples/appprotect](https://github.com/nginxinc/kubernetes-ingress/tree/master/examples/appprotect)
 
+# 環境構築
 ## 1. Syslog ServerのDeploy
 ```
 kubectl create -f syslog.yaml
@@ -54,8 +55,22 @@ cafe-ingress.yaml内、syslog serverのIPアドレスを[手順1.](https://githu
 ```yaml
 appprotect.f5.com/app-protect-security-log-destination: "syslog:server=127.0.0.1:514"
 ```
+
 Ingress Resouceの作成
 ```
 kubectl create -f cafe-ingress.yaml
 ```
 
+
+# 動作確認
+## サンプルリクエストの実行
+```
+curl -H "Host: cafe.example.com" https://**宛先IPアドレス**/coffee --insecure
+curl -H "Host: cafe.example.com" "https://**宛先IPアドレス**/coffee?<script>" --insecure
+curl -H "Host: cafe.example.com" https://**宛先IPアドレス**/tea --insecure
+curl -H "Host: cafe.example.com" "https://**宛先IPアドレス**/tea?<script>" --insecure
+```
+## Security Logの確認
+```
+kubectl exec -it **SYSLOG_POD** -- cat /var/log/messages
+```
