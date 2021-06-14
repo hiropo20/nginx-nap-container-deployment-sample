@@ -38,5 +38,5 @@ kubectl exec -it **SYSLOG_POD** -- cat /var/log/messages
 ```
 kubectl get pods -n perpod
 kubectl logs **Per-Pod POD名** **Container名** -n perpod
-kubectl exec -c **Container名** -it **Per-Pod POD名** -- bash -n perpod
+kubectl exec -c **Container名** -it **Per-Pod POD名** bash -n perpod
 ```
