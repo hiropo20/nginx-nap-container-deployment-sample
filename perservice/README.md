@@ -21,6 +21,7 @@ data:
 以下実行例では、10.72.0.1 が指定するDNS ServerのIPアドレスとなる
 $ kubectl get svc -n kube-system | grep dns
 kube-dns               ClusterIP   10.72.0.1     <none>        53/UDP,53/TCP   10d
+
 $ kubectl exec -it **POD 名** cat /etc/resolv.conf 
 nameserver 10.72.0.1
 options ndots:5
