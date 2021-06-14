@@ -15,13 +15,16 @@ Trialまたはご契約Subscriptionのライセンスファイルを取得くだ
 NGINX PlusおよびNGINX App Protectの利用が可能なライセンスファイルをご準備ください
 1. Ingress Controller Imageの作成   
 [NGINX Doc:Building the Ingress Controller Image](https://docs.nginx.com/nginx-ingress-controller/installation/building-ingress-controller-image/)   
-MakeFileのTargetとして以下を選択ください
-```
-debian-image-nap-plus: for building a debian-based image with NGINX Plus and the appprotect module.
-```
+MakeFileのTargetとして以下を選択ください   
+`debian-image-nap-plus: for building a debian-based image with NGINX Plus and the appprotect module.`
 1. Ingress Controller のデプロイ   
 [NGINX Doc:Installation with Manifests](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/)
 
-## 2. IngressでNAPを利用する
-## 3. Per-Service ProxyでNAPを利用する
-## 4. Per-Pod ProxyでNAPを利用する
+## 2. NGINX App Protect Docker Imanageを作成する
+[NGINX App Protect Dockerfile](https://github.com/hiropo20/nginx-nap-container-deployment-sample/tree/master/nginx-nap-dockerfile)
+## 3. IngressでNAPを利用する
+[Ingress](https://github.com/hiropo20/nginx-nap-container-deployment-sample/tree/master/ingress)
+## 4. Per-Service ProxyでNAPを利用する
+[Per-Service Proxy](https://github.com/hiropo20/nginx-nap-container-deployment-sample/tree/master/perservice)
+## 5. Per-Pod ProxyでNAPを利用する
+[Per-Pod Proxy](https://github.com/hiropo20/nginx-nap-container-deployment-sample/tree/master/perpod)
