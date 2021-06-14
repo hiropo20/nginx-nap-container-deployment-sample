@@ -4,7 +4,7 @@ metadata:
   name: nginx-conf
 data:
   ap-default.conf: |
-    resolver 10.72.0.10;
+    resolver 127.0.0.1;
     resolver_timeout 10s;
 
     upstream app_backend_com {
