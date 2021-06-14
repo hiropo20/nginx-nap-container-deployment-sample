@@ -30,10 +30,9 @@ kubectl apply -f cafe-virtual-server.yaml -n perpod
 # 動作確認
 ## サンプルリクエストの実行
 ```
-curl -H "Host: perpod-cafe.example.com" https://**宛先IPアドレス**/coffee --insecure
-curl -H "Host: perpod-cafe.example.com" "https://**宛先IPアドレス**/coffee?<script>" --insecure
-curl -H "Host: perpod-cafe.example.com" https://**宛先IPアドレス**/tea --insecure
-curl -H "Host: perpod-cafe.example.com" "https://**宛先IPアドレス**/tea?<script>" --insecure
+curl -H "Host: perpod-cafe.example.com" https://**宛先IPアドレス**/ --insecure
+curl -H "Host: perpod-cafe.example.com" "https://**宛先IPアドレス**/?<script>" --insecure
+
 ```
 ## Security Logの確認
 ```
