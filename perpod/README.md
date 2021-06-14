@@ -10,7 +10,7 @@ ap-perpod.yaml内、syslog serverのIPアドレスを[Ingress 手順1.](https://
 ```
 app_protect_security_log "/etc/nginx/custom_log_format.json" syslog:server=127.0.0.1:514;
 ```
-ap-perservice.yaml内、imageを予め作成したContainer Imageを指定してください
+ap-perservice.yaml内、予め作成したContainer Imageを以下image欄に指定してください
 ```yaml
       - name: perpod-nap
         image: nginx-plus-nap:latest 
